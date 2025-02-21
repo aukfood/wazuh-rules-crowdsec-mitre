@@ -1,3 +1,5 @@
-# Wazuh Rules for CrowdSec - MITRE Reference
+# CrowdSec x Wazuh - Intégration et Référencement MITRE
 
-Ce dépôt contient un fichier XML avec des règles Wazuh pour intégrer CrowdSec dans vos systèmes de sécurité, tout en étant aligné avec les techniques et les tactiques du cadre MITRE ATT&CK™. Ces règles sont conçues pour enrichir la détection d'événements de sécurité tout en assurant une meilleure visibilité sur les menaces potentielles.
+## Description
+
+Ce dépôt contient le fichier `crowdsec.xml`, un ensemble de règles Wazuh spécialement conçu pour intégrer CrowdSec à Wazuh tout en assurant le référencement MITRE ATT&CK
