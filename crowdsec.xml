@@ -3,11 +3,10 @@
   -  Author: Killian Prin-Abeil
   -  Enterprise : Aukfood
   -  Date : 30/08/2024
-  -  Updated : 21/02/2025
+  -  Updated : 27/02/2025
 -->
 
 <group name="crowdsec,">
-
     <rule id="100002" level="12">
         <decoded_as>json</decoded_as>
         <field name="crowdsec.program">crowdsec</field>
@@ -209,7 +208,7 @@
     </rule>
     <rule id="100027" level="11">
         <if_sid>100002</if_sid>
-        <field name="crowdsec.alert.scenario">LePresidente/CVE-2019-18935</field>
+        <field name="crowdsec.alert.scenario">crowdsecurity/CVE-2019-18935</field>
         <mitre>
             <id>T1595</id>
             <id>T1190</id>
@@ -218,10 +217,18 @@
     </rule>
     <rule id="100028" level="11">
         <if_sid>100002</if_sid>
-        <field name="crowdsec.alert.scenario">LePresidente/fortinet-cve-2018-13379</field>
+        <field name="crowdsec.alert.scenario">crowdsecurity/fortinet-cve-2018-13379</field>
         <mitre>
             <id>T1595</id>
             <id>T1190</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule>
+    <rule id="100029" level="11">
+        <if_sid>100002</if_sid>
+        <field name="crowdsec.alert.scenario">crowdsecurity/http-cve-probing</field>
+        <mitre>
+            <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
@@ -326,11 +333,27 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-
+    
 <!--
     NEXTCLOUD EVENT
 -->
-    <rule id="100050" level="11">
+    <rule id="100050" level="12">
+        <if_sid>100002</if_sid>
+        <field name="crowdsec.alert.scenario">crowdsecurity/nextcloud-bf</field>
+        <mitre>
+            <id>T1110</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule>
+    <rule id="100051" level="12">
+        <if_sid>100002</if_sid>
+        <field name="crowdsec.alert.scenario">crowdsecurity/nextcloud-bf_user_enum</field>
+        <mitre>
+            <id>T1110</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule>
+    <rule id="100052" level="11">
         <if_sid>100002</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/nextcloud-bf_domain_error</field>
         <mitre>
@@ -338,5 +361,4 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-
 </group>
