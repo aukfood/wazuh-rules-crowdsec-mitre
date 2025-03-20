@@ -3,57 +3,70 @@
   -  Author: Killian Prin-Abeil
   -  Enterprise : Aukfood
   -  Date : 30/08/2024
-  -  Updated : 27/02/2025
+  -  Updated : 20/03/2025
 -->
 
 <group name="crowdsec,">
-    <rule id="100002" level="12">
+    <rule id="100000" level="12">
         <decoded_as>json</decoded_as>
         <field name="crowdsec.program">crowdsec</field>
         <description>CrowdSec alert: $(crowdsec.alert.message)</description>
     </rule>
 
-    <rule id="100003" level="3">
-        <if_sid>100002</if_sid>
+    <rule id="100001" level="3">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.message">test alert</field>
         <description>Test alert for CrowdSec.</description>
     </rule>
     
-    <rule id="100004" level="15">
-        <if_sid>100002</if_sid>
+    <rule id="100000" level="15">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.remediation">false</field>
         <description>CrowdSec alert with no remediation: $(crowdsec.alert.message)</description>
     </rule>
-    
+
+<!--
+    OPENSEARCH EVENT
+-->
+    <rule id="100100" level="14">
+        <if_sid>100000</if_sid>
+        <field name="crowdsec.alert.scenario">bouddha-fr/opensearch-dashboard-bf</field>
+        <mitre>
+            <id>T1110</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule> 
+
+
 <!--
     SSH EVENT
 -->
-    <rule id="100006" level="6">
-        <if_sid>100002</if_sid>
+    <rule id="100200" level="6">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/ssh-bf</field>
         <mitre>
             <id>T1110</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>   
-    <rule id="100007" level="6">
-        <if_sid>100002</if_sid>
+    <rule id="100201" level="6">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/ssh-slow-bf</field>
         <mitre>
             <id>T1110</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100008" level="6">
-        <if_sid>100002</if_sid>
+    <rule id="100202" level="6">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/ssh-slow-bf_user-enum</field>
         <mitre>
             <id>T1110</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100009" level="6">
-        <if_sid>100002</if_sid>
+    <rule id="100203" level="6">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/ssh-bf_user-enum</field>
         <mitre>
             <id>T1589</id>
@@ -64,56 +77,56 @@
 <!--
     HTTP EVENT
 -->
-    <rule id="100010" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100300" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-bad-user-agent</field>
         <mitre>
             <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100011" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100301" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-probing</field>
         <mitre>
             <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100012" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100302" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">ltsich/http-w00tw00t</field>
         <mitre>
             <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100013" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100303" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-sensitive-files</field>
         <mitre>
             <id>T1595.003</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100014" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100304" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-open-proxy</field>
         <mitre>
             <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100015" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100305" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-backdoors-attempts</field>
         <mitre>
             <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100016" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100306" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-cve-2021-41773</field>
         <mitre>
             <id>T1190</id>
@@ -121,8 +134,8 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100017" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100307" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/CVE-2022-41082</field>
         <mitre>
             <id>T1190</id>
@@ -130,8 +143,8 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100018" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100308" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/jira_cve-2021-26086</field>
         <mitre>
             <id>T1190</id>
@@ -139,32 +152,32 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100019" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100309" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-crawl-non_statics</field>
         <mitre>
             <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100020" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100310" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-path-traversal-probing</field>
         <mitre>
             <id>T1595.002</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100021" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100311" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/CVE-2017-9841</field>
         <mitre>
             <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100022" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100312" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/thinkphp-cve-2018-20062</field>
         <mitre>
             <id>T1190</id>
@@ -172,8 +185,8 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100023" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100313" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-cve-2021-42013</field>
         <mitre>
             <id>T1190</id>
@@ -181,16 +194,16 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100024" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100314" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-admin-interface-probing</field>
         <mitre>
             <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100025" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100315" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/netgear_rce</field>
         <mitre>
             <id>T1595</id>
@@ -198,16 +211,16 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100026" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100316" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">LePresidente/http-generic-403-bf</field>
         <mitre>
             <id>T1190</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100027" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100317" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/CVE-2019-18935</field>
         <mitre>
             <id>T1595</id>
@@ -215,8 +228,8 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100028" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100318" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/fortinet-cve-2018-13379</field>
         <mitre>
             <id>T1595</id>
@@ -224,28 +237,72 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100029" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100319" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-cve-probing</field>
         <mitre>
             <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-
+    <rule id="100320" level="11">
+        <if_sid>100000</if_sid>
+        <field name="crowdsec.alert.scenario">crowdsecurity/CVE-2024-0012</field>
+        <mitre>
+            <id>T1190</id>
+            <id>T1595</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule>
+    <rule id="100321" level="11">
+        <if_sid>100000</if_sid>
+        <field name="crowdsec.alert.scenario">crowdsecurity/CVE-2022-35914</field>
+        <mitre>
+            <id>T1190</id>
+            <id>T1595</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule>
+    <rule id="100322" level="11">
+        <if_sid>100000</if_sid>
+        <field name="crowdsec.alert.scenario">crowdsecurity/CVE-2023-22518</field>
+        <mitre>
+            <id>T1190</id>
+            <id>T1595</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule>
+    <rule id="100325" level="11">
+        <if_sid>100000</if_sid>
+        <field name="crowdsec.alert.scenario">crowdsecurity/CVE-2023-49103</field>
+        <mitre>
+            <id>T1190</id>
+            <id>T1595</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule>
+    <rule id="100324" level="11">
+        <if_sid>100000</if_sid>
+        <field name="crowdsec.alert.scenario">LePresidente/http-generic-401-bf</field>
+        <mitre>
+            <id>T1190</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule>
+    
 <!--
     WORDPRESS EVENT
 -->
-    <rule id="100030" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100400" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-wordpress-scan</field>
         <mitre>
             <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100031" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100401" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-wordpress_user-enum</field>
         <mitre>
             <id>T1110</id>
@@ -254,16 +311,16 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100032" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100402" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-bf-wordpress_bf_xmlrpc</field>
         <mitre>
             <id>T1110</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100033" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100403" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/http-bf-wordpress_bf</field>
         <mitre>
             <id>T1110</id>
@@ -274,8 +331,8 @@
 <!--
     IPTABLES EVENT
 -->
-    <rule id="100035" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100500" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/iptables-scan-multi_ports</field>
         <mitre>
             <id>T1595.001</id>
@@ -288,8 +345,8 @@
 <!--
     BIND9 EVENT
 -->
-    <rule id="100040" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100600" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">mstilkerich/bind9-refused</field>
         <mitre>
             <id>T1590.002</id>
@@ -300,19 +357,19 @@
 <!--
     POSTFIX/DOVECOT EVENT
 -->
-    <rule id="100045" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100700" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/postfix-spam</field>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
 
-    <rule id="100046" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100701" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/postscreen-rbl</field>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule> 
-    <rule id="100047" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100702" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/postfix-relay-denied</field>
         <mitre>
             <id>T1595</id>
@@ -320,13 +377,13 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule> 
-    <rule id="100048" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100703" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/postfix-non-smtp-command</field>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule> 
-    <rule id="100049" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100704" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/dovecot-spam</field>
         <mitre>
             <id>T1110</id>
@@ -337,24 +394,24 @@
 <!--
     NEXTCLOUD EVENT
 -->
-    <rule id="100050" level="12">
-        <if_sid>100002</if_sid>
+    <rule id="100800" level="12">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/nextcloud-bf</field>
         <mitre>
             <id>T1110</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100051" level="12">
-        <if_sid>100002</if_sid>
+    <rule id="100801" level="12">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/nextcloud-bf_user_enum</field>
         <mitre>
             <id>T1110</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100052" level="11">
-        <if_sid>100002</if_sid>
+    <rule id="100802" level="11">
+        <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/nextcloud-bf_domain_error</field>
         <mitre>
             <id>T1110</id>
