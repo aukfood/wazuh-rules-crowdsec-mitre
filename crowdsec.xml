@@ -272,7 +272,7 @@
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
-    <rule id="100325" level="11">
+    <rule id="100323" level="11">
         <if_sid>100000</if_sid>
         <field name="crowdsec.alert.scenario">crowdsecurity/CVE-2023-49103</field>
         <mitre>
@@ -286,6 +286,32 @@
         <field name="crowdsec.alert.scenario">LePresidente/http-generic-401-bf</field>
         <mitre>
             <id>T1190</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule>
+    <rule id="100325" level="11">
+        <if_sid>100000</if_sid>
+        <field name="crowdsec.alert.scenario">crowdsecurity/CVE-2022-26134</field>
+        <mitre>
+            <id>T1190</id>
+            <id>T1595</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule>
+    <rule id="100326" level="12">
+        <if_sid>100000</if_sid>
+        <field name="crowdsec.alert.scenario">crowdsecurity/http-xss-probing</field>
+        <mitre>
+            <id>T1595.002</id>
+        </mitre>
+        <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+    </rule>
+    <rule id="100327" level="12">
+        <if_sid>100000</if_sid>
+        <field name="crowdsec.alert.scenario">crowdsecurity/apache_log4j2_cve-2021-44228</field>
+        <mitre>
+            <id>T1190</id>
+            <id>T1595</id>
         </mitre>
         <description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
     </rule>
