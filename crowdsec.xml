@@ -3,7 +3,7 @@
 -Author: Killian Prin-Abeil
 -Enterprise : Aukfood
 -Date : 30/08/2024
--Updated : 18/04/2025
+-Updated : 30/04/2025
 -->
 <group name="crowdsec,">
 	<rule id="100000" level="12">
@@ -302,6 +302,66 @@ HTTP EVENT
 	<rule id="100327" level="12">
 		<if_sid>100000</if_sid>
 		<field name="crowdsec.alert.scenario">crowdsecurity/apache_log4j2_cve-2021-44228</field>
+		<mitre>
+			<id>T1190</id>
+			<id>T1595</id>
+		</mitre>
+		<description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+	</rule>
+	<rule id="100328" level="12">
+		<if_sid>100000</if_sid>
+		<field name="crowdsec.alert.scenario">crowdsecurity/CVE-2023-22515</field>
+		<mitre>
+			<id>T1190</id>
+			<id>T1595</id>
+		</mitre>
+		<description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+	</rule>
+	<rule id="100329" level="12">
+		<if_sid>100000</if_sid>
+		<field name="crowdsec.alert.scenario">crowdsecurity/CVE-2022-46169-bf</field>
+		<mitre>
+			<id>T1592</id>
+		</mitre>
+		<description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+	</rule>
+	<rule id="100330" level="12">
+		<if_sid>100000</if_sid>
+		<field name="crowdsec.alert.scenario">crowdsecurity/CVE-2022-46169-cmd</field>
+		<mitre>
+		    <id>t1190</id>
+			<id>T1595</id>
+		</mitre>
+		<description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+	</rule>
+	<rule id="100331" level="12">
+		<if_sid>100000</if_sid>
+		<field name="crowdsec.alert.scenario">crowdsecurity/fortinet-cve-2022-40684</field>
+		<mitre>
+			<id>T1548</id>
+		</mitre>
+		<description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+	</rule>
+	<rule id="100332" level="12">
+		<if_sid>100000</if_sid>
+		<field name="crowdsec.alert.scenario">crowdsecurity/CVE-2022-37042</field>
+		<mitre>
+		    <id>T1190</id>
+			<id>T1595</id>
+		</mitre>
+		<description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+	</rule>
+	<rule id="100333" level="12">
+		<if_sid>100000</if_sid>
+		<field name="crowdsec.alert.scenario">crowdsecurity/spring4shell_cve-2022-22965</field>
+		<mitre>
+			<id>T1190</id>
+		</mitre>
+		<description>CrowdSec alert: $(crowdsec.alert.scenario)</description>
+	</rule>
+	<rule id="100334" level="12">
+		<if_sid>100000</if_sid>
+		<field name="crowdsec.alert.scenario">crowdsecurity/f5-big-ip-cve-2020-5902</field>
 		<mitre>
 			<id>T1190</id>
 			<id>T1595</id>
